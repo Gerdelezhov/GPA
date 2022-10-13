@@ -15,6 +15,6 @@ telebot - Python Telegram bot api (https://github.com/eternnoir/pyTelegramBotAPI
 Файл token.txt содержит токен для Telegram бота.  
 Файл protean-booth.json содержит данные учетной записи службы для доступа к Google таблицам (https://console.developers.google.com/).  
 Файл url.txt содержит ссылку на таблицу с данными.
-  
-<p align="center"><img align="center" src= 'https://github.com/Gerdelezhov/GPA/blob/main/image/img_1.png')/>
-<br>Пример работы.</p>
+
+## Пример работы:
+<p align="center"><img align="center" src= 'https://github.com/Gerdelezhov/GPA/blob/main/image/img_1.png')/></p>
