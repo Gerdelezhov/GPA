@@ -1,2 +1,2 @@
 # GPA
-![](https://drive.google.com/file/d/1If-fCBj2jcH9i7PU9pUIArs2m1-TWBh5/view?usp=sharing)
+![](https://github.com/Gerdelezhov/GPA/blob/main/image/img_1.png)
