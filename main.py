@@ -3,7 +3,7 @@ from telebot import types
 import time
 import script
 
-with open('token.txt') as f:
+with open(r'C:\Users\gerde\Desktop\py\GPA\token.txt') as f:
     token = f.readline()
 f.close()
 
