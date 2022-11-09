@@ -1,6 +1,7 @@
+#! /usr/bin/env python
+# -*- coding: utf-8 -*-
 import telebot
 from telebot import types
-import time
 import script
 
 with open('token.txt') as f:
@@ -22,12 +23,8 @@ def start_command(message):
 
 @bot.message_handler(commands=['Справка по МЛТА'])
 def mlta(message):
-    script.mlta_script()
-    f = open(r"message.txt", "r")
-    for line in f:
-        bot.send_message(message.chat.id, line)
-        time.sleep(1)
-    f.close()
+    text = script.mlta_script()
+    bot.send_message(message.chat.id, text)
 
 @bot.message_handler(content_types=['text'])
 def check_command(message):
