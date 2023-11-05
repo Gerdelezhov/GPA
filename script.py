@@ -12,12 +12,16 @@ f.close()
 sh = gc.open_by_url(url)
 worksheet = sh.sheet1
 
-table = worksheet.get_all_values()
+
+def get_table():
+    table = worksheet.get_all_values()
+    return table
+
 
 students_number = 153
 
 
-def get_data_from_list(col_number):
+def get_data_from_list(table, col_number):
     new_marks = []
     for i in range(students_number):
         new_marks.append(table[i + 1][col_number])
@@ -40,19 +44,14 @@ def cleaning_data(data):
 
 
 def mlta_script():
+    table = get_table()
 
     marks = []
+
     for i in range(students_number):
-        marks.append(table[i + 1][23])
-
+        marks.append(table[i + 1][67])
     cleaning_data(marks)
-
-    for colum in range(25, 47):
-        newdata = get_data_from_list(colum)
-        cleaning_data(newdata)
-        for row in range(0, students_number):
-            marks[row] += newdata[row]
-
+        
     my_data = marks[26]
 
     # ищу наибольший балл
@@ -61,10 +60,10 @@ def mlta_script():
         if int(marks[i]) <= m_value:
             continue
         m_value = int(marks[i])
-    
+
     message = ('Максимальный балл: ' + str(m_value) + '.\n')
-    message += ('Твой балл: ' + str(my_data) + '.\n') 	
-    
+    message += ('Твой балл: ' + str(my_data) + '.\n')
+
     # считаю количество людей у кторых балл больше
     count = 0
     for i in range(0, students_number):
@@ -81,14 +80,35 @@ def mlta_script():
     studetns_data = [0] * students_number
     for i in range(0, students_number):
         studetns_data[i - 1] = int(marks[i])
-
     studetns_data.sort()
 
+    amount = 0
+    for i in range(len(studetns_data)):
+        amount += studetns_data[i]
+        
+    message += ("Средний балл: " + str(amount/153))
+    message += ("\nМедианный балл: " + str(studetns_data[77]))
+
     top_10 = studetns_data[-15]
-    message += ("Что бы войти в 10% необходимо следующее количество баллов: " +
-                str(top_10) + '.\n')
+    message += ("\nЧто бы войти в 10% необходимо следующее количество баллов: " +
+                str(top_10) + '.')
 
-    top_25 = studetns_data[-37]
-    message += ("Что бы войти в 25% - " + str(top_25) + '.')
+    top_25 = studetns_data[-38]
+    message += ("\nЧто бы войти в 25% - " + str(top_25) + '.')
 
+    top_30 = studetns_data[-45]
+    message += ("\nЧто бы войти в 30% - " + str(top_30) + '.')
+    
     return message
+
+def new_mark():
+    table = get_table()
+
+    marks = []
+
+    for i in range(students_number):
+        marks.append(table[i + 1][67])
+    cleaning_data(marks)
+        
+    my_data = marks[26]
+    return(my_data)
